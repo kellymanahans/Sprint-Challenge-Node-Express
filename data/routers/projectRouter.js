@@ -67,10 +67,9 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
     const {id} = req.params;
-    const {name, description, completed } = req.body;
-    if (name, description, completed){
+    const newProject = req.body;
         projects
-        .update(id, {name, description, completed})
+        .update(id, newProject)
         .then(project => {
             if (project) {
                 projects.getProjectActions(id)
@@ -87,6 +86,6 @@ router.put("/:id", (req, res) => {
             .status(500)
             .json({errorMessage : 'project could not be retrieved'});
         });
-}});
+});
 
 module.exports = router;
